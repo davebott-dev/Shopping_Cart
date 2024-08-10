@@ -6,8 +6,11 @@ const Root= () => {
 
 
   return (
-  <div>
-    <h1>Main Page</h1>
+  <div className ='homepage'>
+    <nav>
+      <div>fruitology</div>
+    </nav>
+    <h1>Shop all types of tasty and delicious fruits</h1>
     <Link to = "cart">Shopping Cart</Link>
   </div>
   )
