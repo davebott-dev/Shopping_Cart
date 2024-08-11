@@ -81,6 +81,7 @@ p {
     font-size: 18px;
     width: 65%;
     color: #6B7280;
+    text-align: center;
 }
 .content{
     display: flex;
@@ -120,4 +121,17 @@ footer{
 .github {
     height: 32px;
     width: 32px;
+}
+
+.error{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.errorLogo {
+    color: red;
+    height: 100px;
+    width: 100px;
 }
