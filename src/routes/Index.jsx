@@ -1,5 +1,6 @@
 import {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
+import {Github} from 'lucide-react'
 
 const API_URL = 'https://emoji-api.com/categories/food-drink?access_key=38d4704991a4f37bc51f0acf466a11adf3c5ae0c'
 
@@ -19,7 +20,6 @@ const Index = () => {
         
         let arr = spliceArr(data)
         setCards(arr)
-        console.log(arr)
       }
     
       useEffect(()=> {
@@ -50,6 +50,9 @@ return (
         </div>
       </div>
       <Link to ="shop"><button type="button" className="shop">Shop Now</button></Link>
+      <footer>
+      <Link to = "https://github.com/davebott-dev"> <Github className="github"/></Link>
+    </footer>  
     </div>
 )
 }

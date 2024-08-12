@@ -5,6 +5,7 @@ import Root from './routes/Root.jsx'
 import Cart from './routes/Cart.jsx'
 import ErrorPage from './errorpage.jsx'
 import Index from './routes/Index.jsx'
+import Shop from './routes/Shop.jsx'
 import './index.css'
 
 
@@ -17,6 +18,11 @@ const router = createBrowserRouter([
       {
         index:true,
         element: <Index/>,
+      },
+      {
+        path: "shop",
+        element: <Shop/>,
+        errorElement: <ErrorPage/>
       }
     ]
   },

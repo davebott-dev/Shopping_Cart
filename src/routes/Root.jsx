@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import {Link, Outlet} from 'react-router-dom'
-import {ShoppingCart, Github} from 'lucide-react'
+import {ShoppingCart} from 'lucide-react'
 
 
 
@@ -23,10 +23,6 @@ const Root= () => {
 
     <Outlet/>
 
-
-    <footer>
-      <Link to = "https://github.com/davebott-dev"> <Github className="github"/></Link>
-    </footer>  
   </div>
   )
 }
