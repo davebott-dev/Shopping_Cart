@@ -102,8 +102,30 @@ p {
     margin-top: 25px;
 }
 
-.card{
+.shopGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(350px,1fr));
+    grid-template-rows: repeat(5, 300px);
+    padding: 0px 75px 75px 75px;
+    grid-gap: 25px;
+    grid-auto-rows: 300px;
+}
+
+.card, .shopCard{
     font-size: 70px;
+}
+
+.shopCard {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.name {
+    font-size: 20px;
+    font-weight: bold;
 }
 
 footer{
@@ -126,8 +148,9 @@ footer{
 .error{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
+    height: 40dvh;
 }
 
 .errorLogo {
@@ -135,3 +158,4 @@ footer{
     height: 100px;
     width: 100px;
 }
+
