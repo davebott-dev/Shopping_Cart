@@ -15,8 +15,8 @@ const Root= () => {
     <nav>
       <Link to= "/"> <div className = 'logo'>Fruitology</div></Link>
       <div className = 'links'>
-      <Link to ="/">Home</Link>
-      <Link to ="shop">Shop</Link>
+      <Link to ="/" className="homeLink">Home</Link>
+      <Link to ="shop" className="shopLink">Shop</Link>
       <Link to = "cart"><button className="shoppingCart">{bagCount}<ShoppingCart/></button></Link>
       </div>
     </nav>
