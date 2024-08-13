@@ -62,7 +62,10 @@ const Shop = () => {
                       ).toFixed(2)}
                 </div>
               </div>
-              <div className="bio"></div>
+              {card.slug.split("-")[card.slug.split("-").length - 1] =="grapes" ? 
+                    <div className="bio">Small, round and decatant fruits that grow in the most abundant clusters. They can be either sweet or tart.</div>
+                    :card.slug.split("-")[card.slug.split("-").length - 1] =="melon" ? 
+                    <div className="bio">A large, juicy interior with a hard shell shows that the best things in life don't come easy.</div> : null}
               <div className="btnCont">
                 <button type="button" className="addToCart">
                   Add to Cart <ShoppingCart />
