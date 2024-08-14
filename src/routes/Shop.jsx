@@ -8,26 +8,30 @@ const API_URL =
 const Shop = () => {
   const [cards, setCards] = useState([]);
   const handleBagCount = useOutletContext();
+  const [isLoading, setIsLoading] = useState(false);
 
   const spliceArr = (array) => {
     return array.splice(0, 21);
   };
 
   const searchEmojis = async () => {
+    setIsLoading(true)
     const response = await fetch(API_URL);
     const data = await response.json();
 
     let arr = spliceArr(data);
     setCards(arr);
+    setIsLoading(false);
   };
 
   useEffect(() => {
     searchEmojis();
   }, []);
 
-  //make prices static and consider making the background color static as well?
+
   return (
     <div className="shopCont">
+      {isLoading? <div className="loader"></div> : null}
       <div className="shopGrid">
         {cards.map((card, index) => (
           <div
@@ -51,17 +55,107 @@ const Shop = () => {
                       .split("-")
                       [card.slug.split("-").length - 1].slice(1)}
                 </div>
+                {card.slug.split("-")[card.slug.split("-").length - 1] ==
+              "grapes" ? (
                 <div className="price">
-                  {isNaN(Number(card.codePoint[card.codePoint.length - 1]))
-                    ? "$" + (Math.random() * (3 - 1) + 1).toFixed(2)
-                    : "$" +
-                      (
-                        Math.random() *
-                          (Number(card.codePoint[card.codePoint.length - 1]) -
-                            1) +
-                        1
-                      ).toFixed(2)}
+                  $1.50
                 </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "melon" ? (
+                <div className="price">
+                 $1.00
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "watermelon" ? (
+                <div className="price">
+                  $3.00
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "tangerine" ? (
+                <div className="price">
+                  $2.00
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "lemon" ? (
+                <div className="price">
+                  $1.00
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "banana" ? (
+                <div className="price">
+                  $4.00
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "pineapple" ? (
+                <div className="price">
+                  $1.00
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "mango" ? (
+                <div className="price">
+                  $5.00
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "apple" ? (
+                <div className="price">
+                  $6.00
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "pear" ? (
+                <div className="price">
+                  $2.50
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "peach" ? (
+                <div className="price">
+                  $1.25
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "cherries" ? (
+                <div className="price">
+                  $1.30
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "strawberry" ? (
+                <div className="price">
+                  $1.80
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "blueberries" ? (
+                <div className="price">
+                  $3.50
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "fruit" ? (
+                <div className="price">
+                  $1.00
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "tomato" ? (
+                <div className="price">
+                  $1.00
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "olive" ? (
+                <div className="price">
+                 $3.00
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "coconut" ? (
+                <div className="price">
+                  $1.10
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "avocado" ? (
+                <div className="price">
+                  $1.50
+                </div>
+              ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
+                "eggplant" ? (
+                <div className="price">
+                  $3.00
+                </div>
+              ) : null}
               </div>
               {card.slug.split("-")[card.slug.split("-").length - 1] ==
               "grapes" ? (
@@ -183,7 +277,7 @@ const Shop = () => {
                 </div>
               ) : null}
               <div className="btnCont">
-                <button type="button" className="addToCart" onClick = {handleBagCount}>
+                <button type="button" className="addToCart" onClick = {handleBagCount} >
                   Add to Cart <ShoppingCart />
                 </button>
               </div>
