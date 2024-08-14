@@ -7,7 +7,9 @@ import {ShoppingCart} from 'lucide-react'
 const Root= () => {
   const [bagCount,setBagCount] =useState(0);
   
-
+  const handleBagCount= () => {
+    setBagCount((prev)=>prev+1);
+  }
 
 
   return (
@@ -17,11 +19,11 @@ const Root= () => {
       <div className = 'links'>
       <Link to ="/" className="homeLink">Home</Link>
       <Link to ="shop" className="shopLink">Shop</Link>
-      <Link to = "cart"><button className="shoppingCart">{bagCount}<ShoppingCart/></button></Link>
+      <button className="shoppingCart">{bagCount}<ShoppingCart/></button>
       </div>
     </nav>
 
-    <Outlet/>
+    <Outlet context ={handleBagCount}/>
 
   </div>
   )

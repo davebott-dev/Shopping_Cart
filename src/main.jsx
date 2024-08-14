@@ -23,14 +23,14 @@ const router = createBrowserRouter([
         path: "shop",
         element: <Shop/>,
         errorElement: <ErrorPage/>
-      }
+      },
+      {
+        path:"cart",
+        element: <Cart/>,
+        errorElement: <ErrorPage/>,
+      },
     ]
   },
-  {
-    path:"cart",
-    element: <Cart/>,
-    errorElement: <ErrorPage/>,
-  }
 ])
 
 createRoot(document.getElementById('root')).render(
