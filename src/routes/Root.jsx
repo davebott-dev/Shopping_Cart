@@ -5,15 +5,30 @@ import { ShoppingCart } from "lucide-react";
 const Root = () => {
   const [bagCount, setBagCount] = useState(0);
   const [showShop, setShowShop] = useState(false);
-  //add use state to add items to cart --use state will be an empty array to start
-  //use outlet context to allow child buttons to update this 
+  const [shopList, setShopList] = useState([]);
 
-  const handleBagCount = () => {
-    setBagCount((prev) => prev + 1);
-  };
+  const createItemList = () => {
+    return shopList.map((item,index)=> (
+      <div className="item"key ={index}>
+        <div>{item.name}.............{item.price}</div>
+        </div>
+    ))
+  }
 
   const handleShowShop = () => {
     setShowShop(!showShop);
+  };
+
+
+
+  const handleBagCount = () => {
+    setShopList([...shopList, {
+      name:'name',
+      price: 'price',
+    }])
+    setBagCount((prev) => prev + 1);
+
+    console.log(shopList)
   };
 
   return (
@@ -47,7 +62,9 @@ const Root = () => {
             </button>
           </div>
           <div className="sidebarBody">
-            <div className="items"></div>
+            <div className="items">
+              {createItemList()}
+            </div>
             <div>Total: $0.00</div>
             <button
               type="button"
