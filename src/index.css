@@ -5,6 +5,7 @@
 html {
     font-family: var(--font);
     height: 100%;
+    background: white;
 }
 
 
@@ -199,6 +200,15 @@ p {
     padding: 10px;
 }
 
+.sidebarHead {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
 footer{
     position: fixed;
     left: 0;
@@ -257,7 +267,16 @@ footer{
     background: white;
     border-left: 1px solid black;
     animation: slideIn 0.2s linear;
-    
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarBody{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
 }
 
 @keyframes slideIn {
@@ -279,3 +298,5 @@ footer{
     height: 204%;
     background-color: rgba(0, 0, 0, 0.5);
 }
+
+/*make webpage responsive on several screen sizes*/
