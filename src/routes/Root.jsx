@@ -19,18 +19,6 @@ const Root = () => {
     setShowShop(!showShop);
   };
 
-
-
-  const handleBagCount = () => {
-    setShopList([...shopList, {
-      name:'name',
-      price: 'price',
-    }])
-    setBagCount((prev) => prev + 1);
-
-    console.log(shopList)
-  };
-
   return (
     <div className={showShop ? "pageCont active" : "pageCont"}>
       <nav>
@@ -74,6 +62,7 @@ const Root = () => {
                   "Congrats! If this was a real store you would have made a purchase."
                 );
                 setBagCount(0);
+                setShopList([])
                 
               }}
             >
@@ -82,7 +71,7 @@ const Root = () => {
           </div>
         </div>
       )}
-      <Outlet context={handleBagCount} />
+      <Outlet context={[shopList,setShopList,setBagCount]} />
     </div>
   );
 };
