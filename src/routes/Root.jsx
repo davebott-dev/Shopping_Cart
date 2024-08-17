@@ -6,14 +6,22 @@ const Root = () => {
   const [bagCount, setBagCount] = useState(0);
   const [showShop, setShowShop] = useState(false);
   const [shopList, setShopList] = useState([]);
+  const [total, setTotal] = useState(0);
 
   const createItemList = () => {
     return shopList.map((item,index)=> (
       <div className="item"key ={index}>
-        <div>{item.name}.............{item.price}</div>
+        <div>
+          {item.name}
+          </div>
+          <div>
+          {item.price}
+          </div>
         </div>
     ))
   }
+
+  //make function that calculates the total price of items in the bag
 
   const handleShowShop = () => {
     setShowShop(!showShop);
@@ -53,7 +61,7 @@ const Root = () => {
             <div className="items">
               {createItemList()}
             </div>
-            <div>Total: $0.00</div>
+            <div><strong>Total: ${total}</strong></div>
             <button
               type="button"
               className="checkout"
