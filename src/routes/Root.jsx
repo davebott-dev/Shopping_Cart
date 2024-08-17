@@ -9,26 +9,23 @@ const Root = () => {
   const [total, setTotal] = useState(0);
 
   const createItemList = () => {
-    return shopList.map((item,index)=> (
-      <div className="item"key ={index}>
+    return shopList.map((item, index) => (
+      <div className="item" key={index}>
         <div>
+          {item.character}
           {item.name}
-          </div>
-          <div>
-          {item.price}
-          </div>
         </div>
-    ))
-  }
-
-  //make function that calculates the total price of items in the bag
+        <div>{item.price}</div>
+      </div>
+    ));
+  };
 
   const handleShowShop = () => {
     setShowShop(!showShop);
   };
 
   return (
-    <div className={showShop ? "pageCont active" : "pageCont"}>
+    <div className={showShop ? " active" : "notActive"}>
       <nav>
         <Link to="/">
           {" "}
@@ -58,20 +55,21 @@ const Root = () => {
             </button>
           </div>
           <div className="sidebarBody">
-            <div className="items">
-              {createItemList()}
+            <div className="items">{createItemList()}</div>
+            <div>
+              <strong>Total: ${total}</strong>
             </div>
-            <div><strong>Total: ${total}</strong></div>
             <button
               type="button"
               className="checkout"
               onClick={() => {
                 alert(
-                  "Congrats! If this was a real store you would have made a purchase."
+                  `Congrats! If this was a real store you would have made a purchase for ${
+                    "$" + total
+                  }`
                 );
                 setBagCount(0);
-                setShopList([])
-                
+                setShopList([]);
               }}
             >
               Checkout
@@ -79,7 +77,7 @@ const Root = () => {
           </div>
         </div>
       )}
-      <Outlet context={[shopList,setShopList,setBagCount]} />
+      <Outlet context={[shopList, setShopList, setBagCount, setTotal]} />
     </div>
   );
 };

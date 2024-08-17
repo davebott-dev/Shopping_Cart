@@ -7,7 +7,7 @@ const API_URL =
 
 const Shop = () => {
   const [cards, setCards] = useState([]);
-  const [shopList, setShopList, setBagCount] = useOutletContext();
+  const [shopList, setShopList, setBagCount, setTotal] = useOutletContext();
   const [isLoading, setIsLoading] = useState(false);
 
   const spliceArr = (array) => {
@@ -23,6 +23,12 @@ const Shop = () => {
     setCards(arr);
     setIsLoading(false);
   };
+
+  let num = 0;
+  for (let i = 0; i < shopList.length; i++) {
+    num += Number(shopList[i].price.split("").splice(1).join(""));
+  }
+  setTotal(num.toFixed(2));
 
   useEffect(() => {
     searchEmojis();
@@ -47,69 +53,68 @@ const Shop = () => {
                     [card.slug.split("-").length - 1].slice(1),
                 ...(card.slug.split("-")[card.slug.split("-").length - 1] ==
                 "grapes"
-                  ? { price: "$1.50" }
+                  ? { price: "$1.50", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "melon"
-                  ? { price: "$1.00" }
+                  ? { price: "$1.00", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "watermelon"
-                  ? { price: "$3.00" }
+                  ? { price: "$3.00", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "tangerine"
-                  ? { price: "$2.00" }
+                  ? { price: "$2.00", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "lemon"
-                  ? { price: "$1.00" }
+                  ? { price: "$1.00", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "banana"
-                  ? { price: "$4.00" }
+                  ? { price: "$4.00", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "pineapple"
-                  ? { price: "$1.00" }
+                  ? { price: "$1.00", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "mango"
-                  ? { price: "$5.00" }
+                  ? { price: "$5.00", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "apple"
-                  ? { price: "$6.00" }
+                  ? { price: "$6.00", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "pear"
-                  ? { price: "$2.50" }
+                  ? { price: "$2.50", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "peach"
-                  ? { price: "$1.25" }
+                  ? { price: "$1.25", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "cherries"
-                  ? { price: "$1.30" }
+                  ? { price: "$1.30", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "strawberry"
-                  ? { price: "$1.80" }
+                  ? { price: "$1.80", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "blueberries"
-                  ? { price: "$3.50" }
+                  ? { price: "$3.50", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "fruit"
-                  ? { price: "$1.00" }
+                  ? { price: "$1.00", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "tomato"
-                  ? { price: "$1.00" }
+                  ? { price: "$1.00", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "olive"
-                  ? { price: "$3.00" }
+                  ? { price: "$3.00", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "coconut"
-                  ? { price: "$1.10" }
+                  ? { price: "$1.10", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "avocado"
-                  ? { price: "$1.50" }
+                  ? { price: "$1.50", character: card.character }
                   : card.slug.split("-")[card.slug.split("-").length - 1] ==
                     "eggplant"
-                  ? { price: "$3.00" }
+                  ? { price: "$3.00", character: card.character }
                   : null),
               },
             ]);
             setBagCount((prev) => prev + 1);
-            
           };
 
           return (
@@ -206,7 +211,7 @@ const Shop = () => {
                   "melon" ? (
                   <div className="bio">
                     A large, juicy interior with a hard shell shows that the
-                    best things in life don't come easy.
+                    best things in life do not come easy.
                   </div>
                 ) : card.slug.split("-")[card.slug.split("-").length - 1] ==
                   "watermelon" ? (
